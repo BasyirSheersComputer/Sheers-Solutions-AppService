@@ -1,5 +1,7 @@
 #README
 
+Schedule for WebApp upload - please update every 2 days
+
 1. This repo is to re-build the Sheers Computer website from scratch using Google Site as reference as well as Canva slides too.
 2. Deadline for site upload is by 31/10/2021
 3. Site is to be uploaded in Azure AppService Free-Tier

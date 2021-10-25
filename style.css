@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    min-height: 100vh;
+    width: 100%;
+    background-image: url(/Home/banner.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}

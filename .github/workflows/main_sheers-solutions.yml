@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'Sheers-Solutions'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_517DDDE4C2C14B4CABDE79CA0865127D }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9EDD5852D3374BFBA1E5A9D730EECFE5 }}
           package: .

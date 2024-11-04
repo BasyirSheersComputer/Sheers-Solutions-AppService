@@ -53,6 +53,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+// Handle form submission
 document.getElementById('contactForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -85,33 +86,6 @@ document.getElementById('contactForm').addEventListener('submit', function (even
     })
     .catch((error) => {
         console.error("Error writing to Cosmos DB", error);
-        document.getElementById('submitErrorMessage').classList.remove('d-none');
-    });
-});
-
-// const analytics = getAnalytics(app);
-
-// Handle form submission
-document.getElementById('contactForm').addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const message = document.getElementById('message').value;
-
-    const newMessageRef = push(ref(database, 'messages'));
-    set(newMessageRef, {
-        name: name,
-        email: email,
-        phone: phone,
-        message: message
-    }).then(() => {
-        document.getElementById('submitSuccessMessage').classList.remove('d-none');
-        document.getElementById('submitButton').classList.add('disabled');
-        document.getElementById('contactForm').reset();
-    }).catch((error) => {
-        console.error("Error writing new message to Firebase Database", error);
         document.getElementById('submitErrorMessage').classList.remove('d-none');
     });
 });

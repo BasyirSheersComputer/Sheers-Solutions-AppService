@@ -1,8 +1,8 @@
-/*!
-* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE)
-*/
+/*! 
+* Start Bootstrap - Agency v7.0.12 (https://startbootstrap.com/theme/agency) 
+* Copyright 2013-2023 Start Bootstrap 
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-agency/blob/master/LICENSE) 
+*/ 
 //
 // Scripts
 // 
@@ -53,20 +53,6 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-// Load Cosmos SDK for browser
-const { CosmosClient } = window.AzureCosmos;
-
-// Cosmos DB connection configuration
-const endpoint = "https://cosmos-sheersdigital-website.documents.azure.com:443/";  // replace with your Cosmos DB endpoint
-// const key = "";  // replace with your Cosmos DB key
-
-// Initialize Cosmos Client
-const client = new CosmosClient({ endpoint, key });
-
-// Database and Container IDs
-const databaseId = "SheersDigital-Website";
-const containerId = "WebsiteForm";
-
 // Handle form submission
 document.getElementById('contactForm').addEventListener('submit', async function (event) {
     event.preventDefault();
@@ -76,28 +62,32 @@ document.getElementById('contactForm').addEventListener('submit', async function
     const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
 
-    // Create a new document (record) in Cosmos DB
+    // Send form data to Logic App URL
+    const logicAppUrl = 'https://prod-34.southeastasia.logic.azure.com:443/workflows/b2499626cbff4278a32178764c29ae2e/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=WwLnP8kQFS6J1H-Xly1JiWXRXpwuE7Q27yyYsr01gKI';  // replace with your Logic App's HTTP POST URL
+
     try {
-        const database = client.database(databaseId);
-        const container = database.container(containerId);
+        const response = await fetch(logicAppUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                phone: phone,
+                message: message
+            })
+        });
 
-        // Create the new item
-        const newItem = {
-            id: `${Date.now()}`,  // unique ID for each item
-            name: name,
-            email: email,
-            phone: phone,
-            message: message
-        };
-
-        await container.items.create(newItem);
-
-        // Show success message
-        document.getElementById('submitSuccessMessage').classList.remove('d-none');
-        document.getElementById('submitButton').classList.add('disabled');
-        document.getElementById('contactForm').reset();
+        if (response.ok) {
+            document.getElementById('submitSuccessMessage').classList.remove('d-none');
+            document.getElementById('submitButton').classList.add('disabled');
+            document.getElementById('contactForm').reset();
+        } else {
+            throw new Error('Submission failed');
+        }
     } catch (error) {
-        console.error("Error writing to Cosmos DB", error);
+        console.error("Error submitting form", error);
         document.getElementById('submitErrorMessage').classList.remove('d-none');
     }
 });

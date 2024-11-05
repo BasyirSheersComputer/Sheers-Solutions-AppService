@@ -53,8 +53,22 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
+// Load Cosmos SDK for browser
+const { CosmosClient } = window.AzureCosmos;
+
+// Cosmos DB connection configuration
+const endpoint = "https://cosmos-sheersdigital-website.documents.azure.com:443/";  // replace with your Cosmos DB endpoint
+// const key = "";  // replace with your Cosmos DB key
+
+// Initialize Cosmos Client
+const client = new CosmosClient({ endpoint, key });
+
+// Database and Container IDs
+const databaseId = "SheersDigital-Website";
+const containerId = "WebsiteForm";
+
 // Handle form submission
-document.getElementById('contactForm').addEventListener('submit', function (event) {
+document.getElementById('contactForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const name = document.getElementById('name').value;
@@ -62,30 +76,28 @@ document.getElementById('contactForm').addEventListener('submit', function (even
     const phone = document.getElementById('phone').value;
     const message = document.getElementById('message').value;
 
-    // Call the Azure Function API
-    fetch('/api/submitForm', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+    // Create a new document (record) in Cosmos DB
+    try {
+        const database = client.database(databaseId);
+        const container = database.container(containerId);
+
+        // Create the new item
+        const newItem = {
+            id: `${Date.now()}`,  // unique ID for each item
             name: name,
             email: email,
             phone: phone,
             message: message
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('submitSuccessMessage').classList.remove('d-none');
-            document.getElementById('submitButton').classList.add('disabled');
-            document.getElementById('contactForm').reset();
-        } else {
-            throw new Error('Submission failed');
-        }
-    })
-    .catch((error) => {
+        };
+
+        await container.items.create(newItem);
+
+        // Show success message
+        document.getElementById('submitSuccessMessage').classList.remove('d-none');
+        document.getElementById('submitButton').classList.add('disabled');
+        document.getElementById('contactForm').reset();
+    } catch (error) {
         console.error("Error writing to Cosmos DB", error);
         document.getElementById('submitErrorMessage').classList.remove('d-none');
-    });
+    }
 });

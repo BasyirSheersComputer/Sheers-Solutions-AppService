@@ -2163,14 +2163,6 @@ textarea.form-control-lg {
      -moz-appearance: none;
           appearance: none;
 }
-
-/* Styling for form container */
-.form-container {
-  padding-top: 1rem;
-  border-top: 1px solid #ddd;
-  margin-top: 2rem;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .form-select {
     transition: none;
@@ -11441,21 +11433,4 @@ hr.my-5 {
   section#services .row .col-md-4 {
     margin-bottom: 1.5rem; /* Add space between each .col-md-4 item on mobile */
   }
-}
-
-/* Styling for contact information section with improved visibility */
-.contact-info {
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  color: #ffffff; /* Set text to white for contrast */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Add subtle shadow for readability */
-}
-
-.contact-info a {
-  color: #ffc800; /* Highlight links with a vibrant color */
-  text-decoration: underline;
-}
-
-.contact-info a:hover {
-  color: #ffd966; /* Slightly lighter color on hover */
 }

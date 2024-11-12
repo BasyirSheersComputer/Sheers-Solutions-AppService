@@ -52,9 +52,9 @@
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Are you ready to elevate your business?</div>
-            <div class="masthead-heading text-uppercase">Unlock Your Business Potential with Sheers Digital!</div>
-            <a class="btn btn-primary btn-xl text-uppercase" href="#contact">Get Started Today</a>
+            <div class="masthead-subheading">At Sheers Digital, we</div>
+            <div class="masthead-heading text-uppercase">Drive Value Through Excellence</div>
+            <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
         </div>
     </header>
     <!-- Services-->
@@ -347,61 +347,51 @@
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Contact Us</h2>
-                <h3 class="section-subheading text-muted">Transform your operations with us. Get in touch to see how we can help you grow!</h3>
+                <h3 class="section-subheading text-muted">>Ready to join our list of satisfied clients? Reach out to discuss how we can empower your operations.</h3>
             </div>
-    
-            <!-- Separate Contact Methods Section -->
-            <div class="contact-info text-center mb-4">
-                <p><strong>Email:</strong> <a href="mailto:abasyir@sheerscomputer.com">abasyir@sheerscomputer.com</a></p>
-                <p><strong>WhatsApp:</strong> <a href="https://wa.me/601163263808" target="_blank">+6011-6326 3808</a></p>
-            </div>
+            <form id="contactForm">
+                <div class="row align-items-stretch mb-5">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <!-- Name input-->
+                            <input class="form-control" id="name" type="text" placeholder="Your Name *" required />
+                            <div class="invalid-feedback">A name is required.</div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Email address input-->
+                            <input class="form-control" id="email" type="email" placeholder="Your Email *" required />
+                            <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+                        </div>
+                        <div class="form-group mb-md-0">
+                            <!-- Phone number input-->
+                            <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required />
+                            <div class="invalid-feedback">A phone number is required.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-textarea mb-md-0">
+                            <!-- Message input-->
+                            <textarea class="form-control" id="message" placeholder="Your Message *"
+                                required></textarea>
+                            <div class="invalid-feedback">A message is required.</div>
+                        </div>
+                    </div>
+                </div>
 
-
-            <div class="form-container">
-                <form id="contactForm">
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" required />
-                                <div class="invalid-feedback">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" required />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <div class="form-group mb-md-0">
-                                <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" required />
-                                <div class="invalid-feedback">A phone number is required.</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="Your Message *"
-                                    required></textarea>
-                                <div class="invalid-feedback">A message is required.</div>
-                            </div>
-                        </div>
+                <!-- Submit success message-->
+                <div class="d-none" id="submitSuccessMessage">
+                    <div class="text-center text-white mb-3">
+                        <div class="fw-bolder">Form submission successful!</div>
                     </div>
-    
-                    <!-- Submit success message-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                        </div>
-                    </div>
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3">Error sending message!</div>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Send Message</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="d-none" id="submitErrorMessage">
+                    <div class="text-center text-danger mb-3">Error sending message!</div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Get In Touch</button>
+                </div>
+            </form>
         </div>
     </section>
 

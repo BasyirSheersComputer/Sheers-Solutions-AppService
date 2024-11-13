@@ -11419,45 +11419,6 @@ hr.my-5 {
   }
 }
 
-/* Service Section Styling */
-#services .section-heading {
-  color: #212529;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-#services .section-subheading {
-  color: #6c757d;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-#services .fa-stack {
-  color: #ffc800; /* Primary color for icons */
-}
-
-#services .col-md-4 {
-  margin-bottom: 2rem; /* Space between service items */
-}
-
-#services .my-3 {
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
-#services p {
-  color: #6c757d;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-top: 0.5rem;
-}
-
-@media (max-width: 576px) {
-  #services .col-md-4 {
-      margin-bottom: 1.5rem;
-  }
-}
-
 /* For the services section */
 .services-container, .services {
   background-color: rgba(0, 0, 0, 0.05);  /* Slight grey background */
